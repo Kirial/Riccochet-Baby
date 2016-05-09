@@ -1,5 +1,8 @@
 package game;
 
+import MenuFramework.ControlledScreen;
+import MenuFramework.ScreensController;
+import MenuFramework.ScreensFramework;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -36,6 +39,12 @@ public class DrawBoard extends JPanel {
     private Graphics thisBoard;
     private JButton back;
     private JButton restart;
+    private ScreensController ScreenParent;
+    private JButton returnMain;
+    private JButton exit;
+    private JButton nextBoard;
+    private int buttonWidth = 200;
+    private int buttonHeight = 75;
 
     public DrawBoard(BoardLoad b) {
         board = b;
@@ -45,8 +54,13 @@ public class DrawBoard extends JPanel {
         charBoard = board.getBoard();
         back = new JButton("Back");
         restart = new JButton("Reset");
+        returnMain = new JButton("New Game");
+        exit = new JButton("Exit");
+        nextBoard = new JButton("Next Board");
         this.add(restart);
         this.add(back);
+        this.add(exit);
+        this.add(nextBoard);
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -99,6 +113,34 @@ public class DrawBoard extends JPanel {
             }
         });
 
+        this.returnMain.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] folders = {"obligatorisk_synlig", "konkurrence_sjove", "konkurrence_random"};
+                Spil.main(folders);
+                owner.dispose();
+            }
+        });
+
+        this.exit.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                owner.dispose();
+            }
+        });
+        
+        this.nextBoard.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] folders = {"obligatorisk_synlig", "konkurrence_sjove", "konkurrence_random"};
+                Spil.main(folders);
+                owner.dispose();
+            }
+        });
+
     }
 
     @Override
@@ -137,6 +179,9 @@ public class DrawBoard extends JPanel {
 
         Point[] p = board.getRobots();
         if (board.isFound()) {
+            this.add(returnMain);
+            exit.setBounds((screenSize.width / 2) - (buttonWidth / 2),(screenSize.height / 2) - (buttonWidth / 2)+40, buttonWidth, buttonHeight);
+            returnMain.setBounds((screenSize.width / 2) - (buttonWidth / 2), (screenSize.height / 2) - (buttonWidth / 2)-40, buttonWidth, buttonHeight);
             g.setColor(new Color(0, 54, 15));
         } else {
             g.setColor(Color.GREEN);
@@ -151,6 +196,7 @@ public class DrawBoard extends JPanel {
             thisBoard.fillRect(0, 0, screenSize.width, screenSize.height);
             this.remove(back);
             this.remove(restart);
+            this.remove(nextBoard);
             return;
         }
         drawMenue(g);
@@ -218,10 +264,9 @@ public class DrawBoard extends JPanel {
     }
 
     private void drawMenue(Graphics g) {
-        int buttonWidth = 200;
-        int buttonHeight = 75;
         restart.setBounds(startPoint.x - buttonWidth - 50, startPoint.y + 20, buttonWidth, buttonHeight);
         back.setBounds(startPoint.x + boxSize * boardSize + 50, startPoint.y + 20, buttonWidth, buttonHeight);
-
+        exit.setBounds(startPoint.x - buttonWidth - 50, startPoint.y + 40+buttonHeight, buttonWidth, buttonHeight);
+        nextBoard.setBounds(startPoint.x + boxSize * boardSize + 50, startPoint.y + 40 +buttonHeight, buttonWidth, buttonHeight);
     }
 }

@@ -83,6 +83,9 @@ public class ScreensFramework extends Application {
     public static String NewGameID = "New Game";
     public static String NewGameScreen = "NewGame.fxml";
 
+    public static String GameID = "Start Game";
+    public static String StartGame = "DrawBoard.java";
+
     @Override
     public void start(Stage primaryStage) {
 
@@ -98,6 +101,7 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen(ScreensFramework.TournamentID, ScreensFramework.TournamentScreen);
         mainContainer.loadScreen(ScreensFramework.NewGameID, ScreensFramework.NewGameScreen);
         mainContainer.loadScreen(ScreensFramework.PreviouslyPlayedID, ScreensFramework.PreviouslyPlayedScreen);
+        mainContainer.loadScreen(ScreensFramework.GameID, ScreensFramework.StartGame);
 
         mainContainer.setScreen(ScreensFramework.StartScreenID);
 

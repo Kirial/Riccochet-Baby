@@ -5,17 +5,21 @@
  */
 package MenuFramework;
 
+import game.Spil;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author taras
  */
-public class NewGameController implements Initializable, ControlledScreen{
+public class NewGameController implements Initializable, ControlledScreen {
 
     ScreensController myController;
 
@@ -31,7 +35,15 @@ public class NewGameController implements Initializable, ControlledScreen{
         myController = screenParent;
     }
 
+    @FXML
+    private void startGame(ActionEvent event) {
+        String[] folders = {"obligatorisk_synlig", "konkurrence_sjove", "konkurrence_random"};
+        Stage s = (Stage) myController.getScene().getWindow();
+        s.hide();
+        Spil.main(folders);
 
+
+    }
 
     public void handleButtonAction(Event event) {
     }
