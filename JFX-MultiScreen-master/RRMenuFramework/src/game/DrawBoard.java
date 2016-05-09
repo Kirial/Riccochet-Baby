@@ -66,9 +66,38 @@ public class DrawBoard extends JPanel {
                 owner.repaint();
 
             }
-
         }
         );
+
+        this.back.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (board.isFound()) {
+
+                    return;
+                }
+
+                board.getLastMove();
+                owner.repaint();
+            }
+        });
+
+        this.restart.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (board.isFound()) {
+                        return;
+                    }
+                    board.reset();
+                    owner.repaint();
+                } catch (Exception ex) {
+                    System.out.println("ERROR");
+                }
+            }
+        });
 
     }
 
@@ -189,41 +218,10 @@ public class DrawBoard extends JPanel {
     }
 
     private void drawMenue(Graphics g) {
-
         int buttonWidth = 200;
         int buttonHeight = 75;
-
         restart.setBounds(startPoint.x - buttonWidth - 50, startPoint.y + 20, buttonWidth, buttonHeight);
         back.setBounds(startPoint.x + boxSize * boardSize + 50, startPoint.y + 20, buttonWidth, buttonHeight);
 
-        back.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (board.isFound()) {
-
-                    return;
-                }
-
-                board.getLastMove();                
-                owner.repaint();
-            }
-        });
-        
-        restart.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    if (board.isFound()) {
-                        return;
-                    }
-                    board.reset();
-                    owner.repaint();
-                } catch (Exception ex) {
-                    System.out.println("ERROR");
-                }
-            }
-        });
     }
 }
