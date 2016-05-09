@@ -36,8 +36,7 @@
  * and therefore, elected the GPL Version 2 license, then the option applies
  * only if the new code is made subject to such option by the copyright
  * holder.
- */ 
-
+ */
 package MenuFramework;
 
 import javafx.application.Application;
@@ -50,7 +49,7 @@ import javafx.stage.Stage;
  * @author Angie
  */
 public class ScreensFramework extends Application {
-    
+
     public static String StartScreenID = "Start";
     public static String StartScreen = "StartScreen.fxml";
 
@@ -81,14 +80,12 @@ public class ScreensFramework extends Application {
     public static String TournamentID = "Load";
     public static String TournamentScreen = "TournamentScreen.fxml";
 
-    public static String NewGameID = "Load";
-    public static String NewGameScreen = "NewGameScreen.fxml";
-
-
+    public static String NewGameID = "New Game";
+    public static String NewGameScreen = "NewGame.fxml";
 
     @Override
     public void start(Stage primaryStage) {
-        
+
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(ScreensFramework.StartScreenID, ScreensFramework.StartScreen);
         mainContainer.loadScreen(ScreensFramework.PlayScreenID, ScreensFramework.PlayScreen);

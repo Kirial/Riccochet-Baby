@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="2300.0" maxWidth="2300.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MenuFramework.NewGameController">
+  <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <children>
+      <Region prefHeight="200.0" prefWidth="200.0" />
+      <VBox fx:id="MenuContainer" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" scaleShape="false" spacing="20.0">
+        <children>
+          <Button fx:id="historieMode" maxWidth="120.0" minWidth="200.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" text="New Game">
+            <padding>
+              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+            </padding>
+          </Button>
+          <Button fx:id="randomMap" maxWidth="120.0" minWidth="200.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" text="Random Map">
+            <padding>
+              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+            </padding>
+          </Button>
+          <Button fx:id="backToPlay" maxWidth="120.0" minWidth="200.0" mnemonicParsing="false" onMouseClicked="#handleButtonAction" text="back">
+            <padding>
+              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+            </padding>
+          </Button>
+        </children>
+        <padding>
+          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+        </padding>
+      </VBox>
+      <Region prefHeight="200.0" prefWidth="200.0" />
+    </children>
+  </HBox>
+</AnchorPane>

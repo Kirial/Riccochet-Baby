@@ -36,8 +36,7 @@
  * and therefore, elected the GPL Version 2 license, then the option applies
  * only if the new code is made subject to such option by the copyright
  * holder.
- */ 
-
+ */
 package MenuFramework;
 
 import java.net.URL;
@@ -52,7 +51,7 @@ import javafx.fxml.Initializable;
  *
  * @author Angie
  */
-public class PlayController implements Initializable , ControlledScreen {
+public class PlayController implements Initializable, ControlledScreen {
 
     ScreensController myController;
     /**
@@ -62,19 +61,25 @@ public class PlayController implements Initializable , ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-    public void setScreenParent(ScreensController screenParent){
+
+    @Override
+    public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
 
     @FXML
-    private void goToStartScreen(ActionEvent event){
-       myController.setScreen(ScreensFramework.StartScreenID);
+    private void goToStartScreen(ActionEvent event) {
+        myController.setScreen(ScreensFramework.StartScreenID);
+    }
+
+    @FXML
+    private void goToScreen3(ActionEvent event) {
+        myController.setScreen(ScreensFramework.PreviouslyPlayedID);
     }
     
     @FXML
-    private void goToScreen3(ActionEvent event){
-       myController.setScreen(ScreensFramework.PreviouslyPlayedID);
+    private void goToNewGame(ActionEvent event) {
+        myController.setScreen(ScreensFramework.NewGameID);
     }
 
     public void handleButtonAction(Event event) {

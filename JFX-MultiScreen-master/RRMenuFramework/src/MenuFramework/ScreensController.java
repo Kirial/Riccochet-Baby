@@ -36,8 +36,7 @@
  * and therefore, elected the GPL Version 2 license, then the option applies
  * only if the new code is made subject to such option by the copyright
  * holder.
- */ 
-
+ */
 package MenuFramework;
 
 import java.util.HashMap;
@@ -55,11 +54,11 @@ import javafx.util.Duration;
  *
  * @author Angie
  */
-public class ScreensController  extends StackPane {
+public class ScreensController extends StackPane {
     //Holds the screens to be displayed
 
     private HashMap<String, Node> screens = new HashMap<>();
-    
+
     public ScreensController() {
         super();
     }
@@ -94,21 +93,26 @@ public class ScreensController  extends StackPane {
     //First it makes sure the screen has been already loaded.  Then if there is more than
     //one screen the new screen is been added second, and then the current screen is removed.
     // If there isn't any screen being displayed, the new screen is just added to the root.
-    public boolean setScreen(final String name) {       
+    public boolean setScreen(final String name) {
         if (screens.get(name) != null) {   //screen loaded
             final DoubleProperty opacity = opacityProperty();
 
             if (!getChildren().isEmpty()) {    //if there is more than one screen
                 Timeline fade = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                        new KeyFrame(new Duration(200), t -> {
-                            getChildren().remove(0);                    //remove the displayed screen
-                            getChildren().add(0, screens.get(name));     //add the screen
-                            Timeline fadeIn = new Timeline(
-                                    new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                                    new KeyFrame(new Duration(200), new KeyValue(opacity, 1.0)));
-                            fadeIn.play();
-                        }, new KeyValue(opacity, 0.0)));
+                        new KeyFrame(
+                                new Duration(200),
+                                t -> {
+                                    getChildren().remove(0);                    //remove the displayed screen
+                                    getChildren().add(0, screens.get(name));     //add the screen
+                                    Timeline fadeIn = new Timeline(
+                                            new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
+                                            new KeyFrame(new Duration(200), new KeyValue(opacity, 1.0)));
+                                    fadeIn.play();
+                                },
+                                new KeyValue(opacity, 0.0))
+                );
+
                 fade.play();
 
             } else {
@@ -152,4 +156,3 @@ public class ScreensController  extends StackPane {
         }
     }
 }
-
