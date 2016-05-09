@@ -130,7 +130,7 @@ public class DrawBoard extends JPanel {
                 owner.dispose();
             }
         });
-        
+
         this.nextBoard.addActionListener(new ActionListener() {
 
             @Override
@@ -179,9 +179,10 @@ public class DrawBoard extends JPanel {
 
         Point[] p = board.getRobots();
         if (board.isFound()) {
+            
             this.add(returnMain);
-            exit.setBounds((screenSize.width / 2) - (buttonWidth / 2),(screenSize.height / 2) - (buttonWidth / 2)+40, buttonWidth, buttonHeight);
-            returnMain.setBounds((screenSize.width / 2) - (buttonWidth / 2), (screenSize.height / 2) - (buttonWidth / 2)-40, buttonWidth, buttonHeight);
+            exit.setBounds((screenSize.width / 2) - (buttonWidth / 2), (screenSize.height / 2) - (buttonWidth / 2) + 40, buttonWidth, buttonHeight);
+            returnMain.setBounds((screenSize.width / 2) - (buttonWidth / 2), (screenSize.height / 2) - (buttonWidth / 2) - 40, buttonWidth, buttonHeight);
             g.setColor(new Color(0, 54, 15));
         } else {
             g.setColor(Color.GREEN);
@@ -197,9 +198,9 @@ public class DrawBoard extends JPanel {
             this.remove(back);
             this.remove(restart);
             this.remove(nextBoard);
-            return;
+        } else {
+            drawMenue(g);
         }
-        drawMenue(g);
 
     }
 
@@ -266,7 +267,7 @@ public class DrawBoard extends JPanel {
     private void drawMenue(Graphics g) {
         restart.setBounds(startPoint.x - buttonWidth - 50, startPoint.y + 20, buttonWidth, buttonHeight);
         back.setBounds(startPoint.x + boxSize * boardSize + 50, startPoint.y + 20, buttonWidth, buttonHeight);
-        exit.setBounds(startPoint.x - buttonWidth - 50, startPoint.y + 40+buttonHeight, buttonWidth, buttonHeight);
-        nextBoard.setBounds(startPoint.x + boxSize * boardSize + 50, startPoint.y + 40 +buttonHeight, buttonWidth, buttonHeight);
+        exit.setBounds(startPoint.x - buttonWidth - 50, startPoint.y + 40 + buttonHeight, buttonWidth, buttonHeight);
+        nextBoard.setBounds(startPoint.x + boxSize * boardSize + 50, startPoint.y + 40 + buttonHeight, buttonWidth, buttonHeight);
     }
 }
